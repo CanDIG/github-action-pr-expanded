@@ -27,6 +27,14 @@ inputs:
     description: 'Create Release Environment label'
     required: false
     default: 'Create Release Environment'
+  pr_title:
+    description: 'Title of pull request'
+    required: false
+    default: '[Auto-generated] Submodule Updates for ${{ github.repository }}'
+  pr_description:
+    description: 'Description of pull request'
+    required: false
+    default: 'Updates submodule ${{ github.repository }}'
   
 runs:
   using: 'composite'
@@ -60,8 +68,8 @@ runs:
           repo: '${{ inputs.parent_repository }}'.split('/')[1].trim(),
           head: process.env.GITHUB_RUN_ID,
           base: '${{ inputs.pr_against_branch }}',
-          title: `[Auto-generated] Submodule Updates ${process.env.GITHUB_RUN_ID}`,
-          body: `[Auto-generated] Submodule Updates ${process.env.GITHUB_RUN_ID}`,
+          title: '${{ inputs.pr_title }}'
+          body: '${{ inputs.pr_description }}',
         });
 
   - name: Add labels
