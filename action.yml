@@ -70,7 +70,7 @@ runs:
         await github.rest.pulls.create({
           owner: '${{ inputs.owner }}',
           repo: '${{ inputs.parent_repository }}'.split('/')[1].trim(),
-          head: process.env.GITHUB_RUN_ID,
+          head: '${{ github.repository }}-${{ github.run_id }}',
           base: '${{ inputs.pr_against_branch }}',
           title: '${{ inputs.pr_title }}',
           body: '${{ inputs.pr_description }}',
