@@ -20,6 +20,9 @@ inputs:
   parent_repository:
     description: 'Parent Repository'
     required: true
+  submodule_path:
+    description: 'Location of submodule in parent repo relative to root'
+    required: true
   owner:
     description: 'Owner'
     required: true
@@ -30,7 +33,7 @@ inputs:
   pr_title:
     description: 'Title of pull request'
     required: false
-    default: '[Auto-generated] Submodule Updates for ${{ github.repository }}'
+    default: '[Auto-generated] Submodule Updates for ${{ github.repository }} (${{ github.run_id }})'
   pr_description:
     description: 'Description of pull request'
     required: false
@@ -53,9 +56,9 @@ runs:
     run: |
       git config user.name github-actions
       git config user.email github-actions@github.com
-      git submodule update --remote
-      git checkout -b $GITHUB_RUN_ID
-      git commit -am "updating submodules"
+      git submodule update "${{ inputs.submodule_path }}"
+      git checkout -b "${{ github.repository }}-$GITHUB_RUN_ID"
+      git commit -m "updating submodules"
       git push --set-upstream origin $GITHUB_RUN_ID
 
   - name: Create pull request against target branch
