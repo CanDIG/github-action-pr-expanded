@@ -72,7 +72,7 @@ runs:
           repo: '${{ inputs.parent_repository }}'.split('/')[1].trim(),
           head: process.env.GITHUB_RUN_ID,
           base: '${{ inputs.pr_against_branch }}',
-          title: '${{ inputs.pr_title }}'
+          title: '${{ inputs.pr_title }}',
           body: '${{ inputs.pr_description }}',
         });
 
