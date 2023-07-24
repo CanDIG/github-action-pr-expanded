@@ -60,7 +60,7 @@ runs:
       git add "${{ inputs.submodule_path }}"
       git checkout -b "${{ github.repository }}-$GITHUB_RUN_ID"
       git commit -m "updating submodules"
-      git push --set-upstream origin $GITHUB_RUN_ID
+      git push --set-upstream origin "${{ github.repository }}-$GITHUB_RUN_ID"
 
   - name: Create pull request against target branch
     uses: actions/github-script@v5
