@@ -56,7 +56,7 @@ runs:
     run: |
       git config user.name github-actions
       git config user.email github-actions@github.com
-      git submodule update "${{ inputs.submodule_path }}"
+      git submodule update --remote "${{ inputs.submodule_path }}"
       git add "${{ inputs.submodule_path }}"
       git checkout -b "${{ github.repository }}-$GITHUB_RUN_ID"
       git commit -m "updating submodules"
