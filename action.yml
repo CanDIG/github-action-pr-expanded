@@ -33,11 +33,11 @@ inputs:
   pr_title:
     description: 'Title of pull request'
     required: false
-    default: '${{ github.repository }} update from merging: ${{ fromJson(steps.get_pr_data.outputs.result).title }}'
+    default: '[Auto-generated] Submodule Updates for ${{ github.repository }} (${{ github.run_id }})'
   pr_description:
     description: 'Description of pull request'
     required: false
-    default: 'PR triggered by update to develop branch on ${{ github.repository }}. Commit hash: `${{ github.sha }}`. PR link: [#${{ fromJson(steps.get_pr_data.outputs.result).number }}](https://github.com/${{ github.repository }}/pull/${{ fromJson(steps.get_pr_data.outputs.result).number }})'
+    default: 'Updates submodule ${{ github.repository }}'
   
 runs:
   using: 'composite'
