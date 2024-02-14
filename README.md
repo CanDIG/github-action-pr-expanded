@@ -72,8 +72,8 @@ Working example from the CanDIG project: [CanDIG/candigv2-ingest workflow file](
 ## Acknowledgements
 
 This action builds on prior work by:
-* @justin-ys 
+* [@justin-ys](https://github.com/justin-ys) 
   * [justin-ys/github-action-pr-expanded](https://github.com/justin-ys/github-action-pr-expanded)
-* @release-hub-com 
+* [@releasehub-com](https://github.com/releasehub-com)
   * [releasehub-com/github-action-create-pr-parent-submodule](https://github.com/releasehub-com/github-action-create-pr-parent-submodule)
   * [GitHub Marketplace](https://github.com/marketplace/actions/github-action-submodule-updates)
