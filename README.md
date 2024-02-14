@@ -29,7 +29,7 @@ name: Submodule Updates
 #############################
 on:
   push:
-    branches-ignore: [develop]
+    branches: [develop]
 
 ###############
 # Set the Job #
@@ -40,8 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PARENT_REPOSITORY: 'org/example-repository'
-      CHECKOUT_BRANCH: 'main'
-      PR_AGAINST_BRANCH: 'main'
+      CHECKOUT_BRANCH: 'develop'
+      PR_AGAINST_BRANCH: 'develop'
       OWNER: 'org'
 
     steps:
