@@ -67,7 +67,7 @@ jobs:
           owner: ${{ env.OWNER }}
 ```
 
-Working example in the CanDIG project: [CanDIG/candigv2-ingest workflow file](https://github.com/CanDIG/candigv2-ingest/blob/develop/.github/workflows/dispatch-actions.yml)
+Working example from the CanDIG project: [CanDIG/candigv2-ingest workflow file](.github/workflows/example.yml) 
 
 ## Acknowledgements
 
