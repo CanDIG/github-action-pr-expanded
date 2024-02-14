@@ -6,7 +6,6 @@ This GitHub action creates a new branch and pull request against the parent repo
 
 - Create a new branch on the parent repository and get all submodules updates
 - Create a pull request from newly created branch
-- Add a custom label to the pull request
 
 ## How to use
 
@@ -30,9 +29,7 @@ name: Submodule Updates
 #############################
 on:
   push:
-    branches-ignore: [master, main]
-  pull_request:
-    branches: [master, main]
+    branches-ignore: [develop]
 
 ###############
 # Set the Job #
@@ -52,18 +49,31 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       ####################################
       # Run the action against code base #
       ####################################
       - name: run action
         id: run_action
-        uses: releasehub-com/github-action-create-pr-parent-submodule@v1
+        uses: releasehub-com/github-action-create-pr-parent-submodule@v4
         with:
           github_token: ${{ secrets.RELEASE_HUB_SECRET }}
           parent_repository: ${{ env.PARENT_REPOSITORY }}
           checkout_branch: ${{ env.CHECKOUT_BRANCH}}
           pr_against_branch: ${{ env.PR_AGAINST_BRANCH }}
+          pr_title: 'Optional title to override the default'
+          pr_description: 'Optional description to override the default'
           owner: ${{ env.OWNER }}
 ```
+
+Working example in the CanDIG project: [CanDIG/candigv2-ingest workflow file](https://github.com/CanDIG/candigv2-ingest/blob/develop/.github/workflows/dispatch-actions.yml)
+
+## Acknowledgements
+
+This action builds on prior work by:
+* @justin-ys 
+  * [justin-ys/github-action-pr-expanded](https://github.com/justin-ys/github-action-pr-expanded)
+* @release-hub-com 
+  * [releasehub-com/github-action-create-pr-parent-submodule](https://github.com/releasehub-com/github-action-create-pr-parent-submodule)
+  * [GitHub Marketplace](https://github.com/marketplace/actions/github-action-submodule-updates)
