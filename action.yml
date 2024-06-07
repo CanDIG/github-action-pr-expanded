@@ -58,6 +58,18 @@ runs:
       git commit -m "updating submodules"
       git push --set-upstream origin "${{ github.repository }}-$GITHUB_RUN_ID"
 
+  - name: Sanitize user input
+    shell: python3
+    run: |
+      import json
+      import os
+      import shlex
+      with open('${{ github.event_path }}') as fh:
+          event = json.load(fh)
+      escaped = shlex.quote(event['pull_request']['title'])
+      with open(os.environ['GITHUB_ENV'], 'a') as fh:
+          print(f'PR_TITLE={escaped}', file=fh)
+
   - name: Create pull request against target branch
     uses: actions/github-script@v7
     with:
