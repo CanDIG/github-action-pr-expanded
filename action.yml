@@ -67,6 +67,7 @@ runs:
       with open('${{ github.event_path }}') as fh:
           event = json.load(fh)
       escaped = shlex.quote(event['pull_request']['title'])
+      print(escaped)
       with open(os.environ['GITHUB_ENV'], 'a') as fh:
           print(f'PR_TITLE={escaped}', file=fh)
 
