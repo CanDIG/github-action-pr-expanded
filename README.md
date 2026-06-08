@@ -49,14 +49,14 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       ####################################
       # Run the action against code base #
       ####################################
       - name: run action
         id: run_action
-        uses: releasehub-com/github-action-create-pr-parent-submodule@v4
+        uses: releasehub-com/github-action-create-pr-parent-submodule@v5
         with:
           github_token: ${{ secrets.RELEASE_HUB_SECRET }}
           parent_repository: ${{ env.PARENT_REPOSITORY }}
